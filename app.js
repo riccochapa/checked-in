@@ -19,6 +19,10 @@ if (MONGO_HOST) {
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var courses = require('./routes/courses');
+var userprofile = require('./routes/userprofile');
+var home = require('./routes/home');
+var settings = require('./routes/settings');
+
 
 var app = express();
 
@@ -38,7 +42,9 @@ app.use(express.static(path.join(__dirname, './public')));
 app.use('/', routes);
 app.use('/courses', courses);
 app.use('/users', users);
-
+app.use('/userprofile', userprofile);
+app.use('/home', home);
+app.use('/settings', settings);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
