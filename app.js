@@ -11,9 +11,9 @@ const MONGO_PORT = process.env.OPENSHIFT_MONGODB_DB_PORT;
 
 var mongoose = require('mongoose');
 if (MONGO_HOST) {
-  mongoose.connect('mongodb://admin:' + MONGO_PASS + '@' + MONGO_HOST + ':' + MONGO_PORT + '/whattoeat');
+  mongoose.connect('mongodb://admin:' + MONGO_PASS + '@' + MONGO_HOST + ':' + MONGO_PORT + '/checkedin');
 } else {
-  mongoose.connect('mongodb://localhost/whattoeat');
+  mongoose.connect('mongodb://localhost/checkedin');
 }
 
 var routes = require('./routes/index');
