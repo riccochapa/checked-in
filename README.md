@@ -59,3 +59,19 @@
 
   /settings/userprofile
     user settings can be configured
+
+## Student Roles
+
+Ricco
+  * Login using Auth0
+  * Create walled garden for application
+  * Transferring customer info from Auth0
+Jacky
+  * Login using Auth0 (additional login features)
+Pam
+  * Auth0 emails (verification, welcome)
+  * CSS
+Steve
+  * Create README
+  * Structure (Routes, Views)
+  * Settings (Emergency Contacts)
