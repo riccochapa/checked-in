@@ -22,6 +22,7 @@ var courses = require('./routes/courses');
 var userprofile = require('./routes/userprofile');
 var home = require('./routes/home');
 var settings = require('./routes/settings');
+var contacts = require('./routes/contacts');
 
 
 var app = express();
@@ -45,6 +46,8 @@ app.use('/users', users);
 app.use('/userprofile', userprofile);
 app.use('/home', home);
 app.use('/settings', settings);
+app.use('/contacts', contacts);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
