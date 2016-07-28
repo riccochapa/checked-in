@@ -71,6 +71,7 @@
 * Pam
   - Auth0 emails (verification, welcome)
   - CSS
+  - i helped with the trello 
 * Steve
   - Create README
   - Structure (Routes, Views)
