@@ -4,6 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 const MONGO_PASS = process.env.MONGO_DB_PASS;
 const MONGO_HOST = process.env.OPENSHIFT_MONGODB_DB_HOST;
@@ -16,16 +19,21 @@ if (MONGO_HOST) {
   mongoose.connect('mongodb://localhost/checkedin');
 }
 
-var routes = require('./routes/index');
+
 var users = require('./routes/users');
 var courses = require('./routes/courses');
-var userprofile = require('./routes/userprofile');
+var routes = require('./routes/index');
+
+
 var home = require('./routes/home');
+var userprofile = require('./routes/userprofile');
 var settings = require('./routes/settings');
 var contacts = require('./routes/contacts');
 
 
+
 var app = express();
+app.use(methodOverride('_method'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -40,13 +48,22 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, './public')));
 
+
 app.use('/', routes);
 app.use('/courses', courses);
 app.use('/users', users);
-app.use('/userprofile', userprofile);
+
+// ---Used for Checked-In web app---
+
+// Home page
 app.use('/home', home);
+//User can view their profile
+app.use('/userprofile', userprofile);
+// User can change their settings
 app.use('/settings', settings);
+// User can view their contacts
 app.use('/contacts', contacts);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

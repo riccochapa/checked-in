@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+  h1 Checked-In
+  h2 Contacts
+  p Hello, #{User}
+  a(href='/home') Home
+  br
+  br
+  a(href='/contacts/add_new_contact') Create Contact
+  ul
+    each contact in contacts
+      li
+        each person in contact.contact
+          p
+            a(href="/contacts/#{contact._id}")= 'Edit'
+            ,#{person.name}, #{person.phone}, #{person.email}
+            a(href="/contacts/#{contact.id}/remove_contact")= 'Delete'

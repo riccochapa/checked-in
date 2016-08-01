@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  h1 Checked-In
+  h2 Edit Contact
+  p Hello, #{User}
+  a(href='/home') Home
+  ul
+    li
+      each person in contact.contact
+        p #{person.name}, #{person.phone}, #{person.email} 
+        form(action="?_method=put", method="post")
+          p name:
+          input(type="text", name="name" value="#{person.name}")
+          br
+          p phone:
+          input(type="text", name="phone" value="#{person.phone}")
+          br
+          p email:
+          input(type="text", name="email" value="#{person.email}")
+          br
+          br
+          input(type="submit")
