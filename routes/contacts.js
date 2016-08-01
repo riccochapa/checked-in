@@ -38,7 +38,7 @@ router.get('/:id', function(req, res, next){
 });
 
 router.put('/:id', function(req, res, next){
-  EmergencyContacts.findByIdAndUpdate(req.params.id, { $set: { _id:req.params.id, contact:[{name: req.body.name, phone: req.body.phone, email: req.body.email}] }}, function (err, contact) {
+  EmergencyContacts.findByIdAndUpdate(req.params.id, { $set: { contact:[{name: req.body.name, phone: req.body.phone, email: req.body.email}] }}, function (err, contact) {
     if (err) return next(err);
     contact.save(function(err){
       if (err) res.send('error ' + err);
