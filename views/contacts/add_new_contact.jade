@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+  h1 Checked-In
+  h2 Create Contact
+  p Hello, #{User}
+  a(href='/home') Home
+  
+  form(action="", method="post")
+    p name:
+    input(type="text", name="name")
+    br
+    p phone:
+    input(type="text", name="phone")
+    br
+    p email:
+    input(type="text", name="email")
+    br
+    br
+    input(type="submit")

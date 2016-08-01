@@ -5,19 +5,9 @@ block content
   h2 Settings
   p Hello, #{User}
   a(href='/home') Home
-  ul
-    each contact in contacts
-      li=contact
-  
-  form(action="", method="post")
-    p name:
-    input(type="text", name="name")
-    br
-    p phone:
-    input(type="text", name="phone")
-    br
-    p email:
-    input(type="text", name="email")
-    br
-    br
-    input(type="submit")
+  br
+  br
+  a(href='/contacts') Show My Contacts
+  br
+  br
+  a(href='/contacts/add_new_contact') Create New Contact
