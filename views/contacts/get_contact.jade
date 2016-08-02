@@ -2,9 +2,11 @@ extends ../layout
 
 block content
   h1 Checked-Ins
-  p Hello, #{User}
-  a(href='/home') Home
+  img(src="#{user.picture}")
+  h2 Welcome #{user.nickname}!
   br
+  a(href='/logout') Logout
+  a(href='/home') Home
   br
   ul
     li

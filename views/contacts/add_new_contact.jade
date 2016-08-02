@@ -3,8 +3,10 @@ extends ../layout
 block content
   h1 Checked-In
   h2 Create Contact
-  p Hello, #{User}
-  a(href='/home') Home
+  img(src="#{user.picture}")
+  h2 Welcome #{user.nickname}!
+  br
+  a(href='/logout') Logout
   
   form(action="", method="post")
     p name:

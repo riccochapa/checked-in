@@ -1,13 +1,14 @@
 extends layout
 
 block content
+
   h1 Checked-In
-  h2 Settings
-  p Hello, #{User}
+  img(src="#{user.picture}")
+  h2 Welcome #{user.nickname}!
   a(href='/home') Home
-  br
   br
   a(href='/contacts') Show My Contacts
   br
-  br
   a(href='/contacts/add_new_contact') Create New Contact
+  br
+  a(href='/logout') Logout

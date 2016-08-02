@@ -3,7 +3,11 @@ extends ../layout
 block content
   h1 Checked-In
   h2 Remove Contact
-  p Hello, #{User}
+  img(src="#{user.picture}")
+  h2 Welcome #{user.nickname}!
+  br
+  a(href='/logout') Logout
+  br
   a(href='/home') Home
   ul
     li

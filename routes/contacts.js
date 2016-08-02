@@ -1,17 +1,19 @@
 var express = require('express');
+var passport = require('passport');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
 
 var EmergencyContacts = require('../models/EmergencyContacts.js');
 
 router.get('/', function(req, res, next){
   EmergencyContacts.find(function(err, docs){
-    res.render('contacts/index', { contacts: docs });
+    res.render('contacts/index', { contacts: docs, user: req.user });
   });
 });
 
 router.get('/add_new_contact', function(req, res, next){
   EmergencyContacts.find(function(err, docs){
-    res.render('contacts/add_new_contact', { contacts: docs });
+    res.render('contacts/add_new_contact', { contacts: docs , user: req.user });
   });
 });
 
@@ -33,7 +35,7 @@ router.get('/:id', function(req, res, next){
   EmergencyContacts.findById(req.params.id, function(err, contact){
     if (err) return next(err);
     if (!contact) return next(404);
-    res.render('contacts/edit_contact', {contact: contact });
+    res.render('contacts/edit_contact', {contact: contact , user: req.user});
   });
 });
 
@@ -53,7 +55,7 @@ router.get('/:id/remove_contact', function(req, res, next){
   EmergencyContacts.findById(req.params.id, function(err, contact){
     if (err) return next(err);
     if (!contact) return next(404);
-    res.render('contacts/remove_contact', {contact: contact});
+    res.render('contacts/remove_contact', {contact: contact , user: req.user});
   });
 });
 
