@@ -3,21 +3,21 @@
 
 ##1: Brainstorm
 
-Checked-in
-    - Application that enables end users to have an alert sent if they do not check-in at a designated time.
-    - Should the end user not check in and disable the alert after designated time an alert is sent to a predetermined contact.
-    - Web based application with a focus on mobile.
+* Checked-in
+    * Application that enables end users to have an alert sent if they do not check-in at a designated time.
+    * Should the end user not check in and disable the alert after designated time an alert is sent to a predetermined contact.
+    * Web based application with a focus on mobile.
 
-Contact information
-    - A feature that allows for contacts to be set in order of escalation.
-    - Should the alert not be disabled and the contact still doesn't hear from end user that is checked in the alert escalates to next contact in system.
+* Contact information
+    * A feature that allows for contacts to be set in order of escalation.
+    * Should the alert not be disabled and the contact still doesn't hear from end user that is checked in the alert escalates to next contact in system.
 
-Login-Auth
-    -Types of login: email, social media or other OAuth providers.
+* Login-Auth
+    * Types of login: email, social media or other OAuth providers.
 
 ##2: Persona
 
-   People are meeting people irl that they've only met online (ie Tinder, selling something on Craigslist, using Uber or Airbnb) or are in situations that they'd prefer to not be in(taking the subway late at night or walking home alone, in a home with an abusive family member or are worried about their safety for whatever reason). Or are going somewhere like camping, hiking, fishing or are traveling abroad.
+   People are meeting people irl that they've only met online (ie Tinder, selling something on Craigslist, using Uber or Airbnb) or are in situations that they'd prefer to not be in (taking the subway late at night or walking home alone, in a home with an abusive family member or are worried about their safety for whatever reason). Or are going somewhere like camping, hiking, fishing or are traveling abroad and need a way to signal for help at a time when they otherwise couldn't.
 
 ##3: Behaviors
 
