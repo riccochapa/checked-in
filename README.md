@@ -38,27 +38,24 @@ Login-Auth
 
 ###Models
 
-  Emergency contacts
-    Name: string
-    phone number: number
-    email: string
+    * Emergency contacts
+    * Name: string
+    * phone number: number
+    * email: string
 
 ###Routes
 
     *  /login
-
     *  /home
         show users profile name
         access to activate/deactivate buttons and their settings
         link to settings page
         link to logout
-
     *  /settings
         user contact information
         access for configuring account information
         link to home page
         link to logout
-
     *  /logout    
 
 ###UI
@@ -71,19 +68,19 @@ Login-Auth
 #Student Roles
 
 
-###Ricco
+* Ricco
   - Create walled garden for application with a login portal to authenticates users.
   - Research the capabilities of the the third party application and understand how to use the information that it provides.
   - Create database that can connect Auth0 user information, alerts database and emergency contacts in order to make application functional.
   - Develop framework for building out the front end portion of the application.
   - Integrate each of the students roles into a central application.  
-###Jacky
+* Jacky
   - Login using Auth0 (additional login features).
   - Develop code for the timer portion of the alerts feature.
-###Pam
+* Pam
   - Working on user experience and Auth0 emails (verification, welcome).
   - Assisted with project management via Trello.
-###Steve
+* Steve
   - Create README
   - Structure (Routes, Views)
   - Settings (Emergency Contacts)
