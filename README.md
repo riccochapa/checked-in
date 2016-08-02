@@ -38,31 +38,31 @@ Login-Auth
 
 ###Models
 
-    * Emergency contacts
-    * Name: string
-    * phone number: number
-    * email: string
+    Emergency contacts
+    Name: string
+    phone number: number
+    email: string
 
 ###Routes
 
-    *  /login
-    *  /home
-        show users profile name
-        access to activate/deactivate buttons and their settings
-        link to settings page
-        link to logout
-    *  /settings
-        user contact information
-        access for configuring account information
-        link to home page
-        link to logout
-    *  /logout    
+    /login
+    /home
+      show users profile name
+      access to activate/deactivate buttons and their settings
+      link to settings page
+      link to logout
+    /settings
+      user contact information
+      access for configuring account information
+      link to home page
+      link to logout
+    /logout    
 
 ###UI
 
-    * Secure login portal and application.
-    * Home page that has access to saved settings and activate/deactivate features.
-    * Settings page that inputs required information.
+    Secure login portal and application.
+    Home page that has access to saved settings and activate/deactivate features.
+    Settings page that inputs required information.
 
 
 #Student Roles
