@@ -21,7 +21,7 @@
 
 ##3: Behaviors
 
-   Wants an emergency contact to be notified if they have not checked-in within a certain time period.
+   Are independent and like to be active in life. They also don't want anyone to worry unless there is a legitimate need.
 
 ##4: Activity
 
