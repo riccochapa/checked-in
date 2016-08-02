@@ -7,6 +7,11 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var Auth0Strategy = require('passport-auth0');
+var dotenv = require('dotenv');
+var session = require('express-session');
+
+dotenv.load();
 
 const MONGO_PASS = process.env.MONGO_DB_PASS;
 const MONGO_HOST = process.env.OPENSHIFT_MONGODB_DB_HOST;
@@ -31,6 +36,28 @@ var settings = require('./routes/settings');
 var contacts = require('./routes/contacts');
 
 
+var strategy = new Auth0Strategy({
+    domain:       process.env.AUTH0_DOMAIN,
+    clientID:     process.env.AUTH0_CLIENT_ID,
+    clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    callbackURL:  process.env.AUTH0_CALLBACK_URL
+  }, function(accessToken, refreshToken, extraParams, profile, done) {
+    // accessToken is the token to call Auth0 API (not needed in the most cases)
+    // extraParams.id_token has the JSON Web Token
+    // profile has all the information from the user
+    return done(null, profile);
+  });
+
+passport.use(strategy);
+
+// you can use this section to keep a smaller payload
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 var app = express();
 app.use(methodOverride('_method'));
@@ -45,6 +72,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, './public')));
 
