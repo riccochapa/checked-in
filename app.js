@@ -30,10 +30,13 @@ var courses = require('./routes/courses');
 var routes = require('./routes/index');
 
 
+
+
 var home = require('./routes/home');
 var userprofile = require('./routes/userprofile');
 var settings = require('./routes/settings');
 var contacts = require('./routes/contacts');
+var timer = require('./routes/timer');
 
 
 var strategy = new Auth0Strategy({
@@ -86,7 +89,7 @@ app.use(express.static(path.join(__dirname, './public')));
 
 app.use('/', routes);
 app.use('/courses', courses);
-app.use('/users', users);
+
 
 // ---Used for Checked-In web app---
 
@@ -98,7 +101,8 @@ app.use('/userprofile', userprofile);
 app.use('/settings', settings);
 // User can view their contacts
 app.use('/contacts', contacts);
-
+// User can access timer
+app.use('/timer', timer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
