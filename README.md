@@ -69,11 +69,11 @@
 
 
 * Ricco
-  - Create walled garden for application with a login portal to authenticates users.
+  - Create walled garden for application with a login portal to authenticate users.
   - Research the capabilities of the the third party application and understand how to use the information that it provides.
-  - Create database that can connect Auth0 user information, alerts database and emergency contacts in order to make application functional.
+  - Create database that can connect Auth0 user information, alerts database and contacts database in order to make application functional.
   - Develop framework for building out the front end portion of the application.
-  - Integrate each of the students roles into a central application.  
+  - Integrate each of the team members contributions into a central application.  
 * Jacky
   - Login using Auth0 (additional login features).
   - Develop code for the timer portion of the alerts feature.
