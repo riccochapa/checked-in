@@ -88,13 +88,13 @@ app.use(express.static(path.join(__dirname, './public')));
 
 
 app.use('/', routes);
-<<<<<<< HEAD
+
 app.use('/courses', courses);
 
-=======
+
 app.use('/users', users);
 app.use('/user', user);
->>>>>>> riccochapa/master
+
 
 // ---Used for Checked-In web app---
 
