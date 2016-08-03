@@ -89,7 +89,7 @@ app.use(express.static(path.join(__dirname, './public')));
 
 app.use('/', routes);
 
-app.use('/courses', courses);
+
 
 
 app.use('/users', users);
