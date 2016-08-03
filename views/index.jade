@@ -1,11 +1,9 @@
 extends layout
 // Login
 block content
-  
-  h1= title
-  p Welcome...
-  p Please #{title}
-  button(onclick="signin()") Login
+
+  H1 Welcome
+  button(onclick="signin()") Get Checked In
   
     script.
       var lock = new Auth0Lock('#{env.AUTH0_CLIENT_ID}', '#{env.AUTH0_DOMAIN}', { auth: {

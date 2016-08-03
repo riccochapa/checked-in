@@ -1,22 +1,30 @@
 extends ../layout
 
 block content
-  h1 Checked-In
-  h2 Create Contact
-  img(src="#{user.picture}")
-  h2 Welcome #{user.nickname}!
+  h1 Checked In
+  h3 Welcome #{user.nickname}!
   br
-  a(href='/logout') Logout
-  
+  h2 Create New Contact
+  br  
   form(action="", method="post")
-    p name:
+    p Name:
     input(type="text", name="name")
     br
-    p phone:
+    p Phone:
     input(type="text", name="phone")
     br
-    p email:
+    p Email:
     input(type="text", name="email")
+    br
+    value(type="text" value="#{user.id}" name="auth0")
     br
     br
     input(type="submit")
+  br
+  br
+  a(href='/settings') Contact Settings
+  br
+  a(href='/alertsettings') Alert Settings
+  br
+  a(href='/user') Home
+  br

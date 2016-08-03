@@ -1,21 +1,25 @@
 extends ../layout
 
 block content
-  h1 Checked-In
+  h1 Checked In
+  h3 Welcome #{user.nickname}!
+  br
   h2 Remove Contact
-  img(src="#{user.picture}")
-  h2 Welcome #{user.nickname}!
   br
-  a(href='/logout') Logout
-  br
-  a(href='/home') Home
+  h4 Are you sure you want to remove this contact?
   ul
     li
       each person in contact.contact
-        p Are you sure you want to delete this contact?
         p #{person.name}, #{person.phone}, #{person.email} 
         form(action="?_method=delete", method="post")
           input(type="hidden", name="name" value="#{person.name}")
           input(type="hidden", name="phone" value="#{person.phone}")
           input(type="hidden", name="email" value="#{person.email}")
-          input(type="submit" value="Delete")
+          br
+          input(type="submit" value="Remove")
+  br
+  a(href='/settings') Contact Settings
+  br
+  a(href='/alertsettings') Alert Settings
+  br
+  a(href='/user') Home

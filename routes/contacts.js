@@ -23,6 +23,7 @@ router.post('/add_new_contact', function(req, res, next){
       name: req.body.name,
       phone: req.body.phone,
       email: req.body.email,
+      auth0: req.body.auth0
     }],
   });
   contact.save(function(err){

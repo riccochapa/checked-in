@@ -31,7 +31,7 @@ var user = require('./routes/user');
 
 
 var home = require('./routes/home');
-var userprofile = require('./routes/userprofile');
+var alertsettings = require('./routes/alertsettings');
 var settings = require('./routes/settings');
 var contacts = require('./routes/contacts');
 
@@ -93,7 +93,7 @@ app.use('/user', user);
 // Home page
 app.use('/home', home);
 //User can view their profile
-app.use('/userprofile', userprofile);
+app.use('/alertsettings', alertsettings);
 // User can change their settings
 app.use('/settings', settings);
 // User can view their contacts

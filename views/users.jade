@@ -1,11 +1,8 @@
 extends layout
 
 block content
-  h1 Checked-In
-  h2 User Profile  
+
   img(src="#{user.picture}")
   h2 Welcome #{user.nickname}!
-  br
-  a(href='/settings') Settings
   br
   a(href='/logout') Logout

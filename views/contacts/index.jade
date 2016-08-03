@@ -1,21 +1,26 @@
 extends ../layout
 
 block content
-  h1 Checked-In
-  h2 Contacts
-  img(src="#{user.picture}")
-  h2 Welcome #{user.nickname}!
+  h1 Checked In
+  h3 Welcome #{user.nickname}!
   br
-  a(href='/logout') Logout
+  h2 Saved Contacts
   br
-  a(href='/home') Home
+  p Add buttons for edit and delete
   br
-  a(href='/contacts/add_new_contact') Create Contact
   ul
     each contact in contacts
-      li
-        each person in contact.contact
-          p
-            a(href="/contacts/#{contact._id}")= 'Edit'
-            ,#{person.name}, #{person.phone}, #{person.email}
-            a(href="/contacts/#{contact.id}/remove_contact")= 'Delete'
+      each person in contact.contact
+        li #{person.name} #{person.phone} #{person.email}
+        a(href="/contacts/#{contact._id}")= 'Edit'                
+        a(href="/contacts/#{contact.id}/remove_contact")= 'Delete'
+        p
+  br
+  br
+  a(href='/User') Home
+  br
+  a(href='/settings') Contact Settings
+  br
+  a(href='/alertsettings') Alert Settings
+  br
+  a(href='/logout') Logout

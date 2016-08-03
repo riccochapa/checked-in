@@ -1,27 +1,36 @@
 extends ../layout
 
 block content
-  h1 Checked-In
-  h2 Edit Contact
-  img(src="#{user.picture}")
-  h2 Welcome #{user.nickname}!
+  h1 Checked In
+  h3 Welcome #{user.nickname}!
   br
-  a(href='/logout') Logout
+  h2 Edit Saved Contact
   br
-  a(href='/home') Home
   ul
     li
       each person in contact.contact
         p #{person.name}, #{person.phone}, #{person.email} 
         form(action="?_method=put", method="post")
-          p name:
+          p Name:
           input(type="text", name="name" value="#{person.name}")
           br
-          p phone:
+          p Phone:
           input(type="text", name="phone" value="#{person.phone}")
           br
-          p email:
+          p Email:
           input(type="text", name="email" value="#{person.email}")
+          br
+          p Auth0:
+          input(type="text", name="auth0" value="#{user.id}")
           br
           br
           input(type="submit")
+  br
+  br
+  br
+  a(href='/settings') Contact Settings
+  br
+  a(href='/alertsettings') Alert Settings
+  br
+  a(href='/user') Home
+  br
