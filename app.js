@@ -65,13 +65,18 @@ app.use(methodOverride('_method'));
 
 
 app.on('alarm', function(){
-  console.log('alarm rung!');
-  console.log(arguments);
+  client.sendMessage({
+     to: '+19568785924',
+     from: '+19562718912',
+     body: 'Hello, You have been contacted because is in danger. Please try contacting them.'
+   });
 });
 
-setTimeout(function(){
-  app.emit('alarm', ['a', 'b'], 'c');
+var alarm = setTimeout(function(){
+  app.emit('alarm');
 }, 5 * 1000)
+
+//clearTimeout(alarm);
 
 
 app.set('views', path.join(__dirname, 'views'));
