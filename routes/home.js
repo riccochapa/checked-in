@@ -9,7 +9,6 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
   res.render('home', { user: req.user });
 });
 
-<<<<<<< HEAD
 var app = express();
 
 // erased this and it worked!!!!!
@@ -60,17 +59,5 @@ setTimeout(function(){
 // }
 //
 // ee.addListener('foo', listener);
-
-
-
-
-
-
-
-
-
-
-=======
->>>>>>> riccochapa/master
 
 module.exports = router;
