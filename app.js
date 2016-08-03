@@ -10,6 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var Auth0Strategy = require('passport-auth0');
 var dotenv = require('dotenv');
 var session = require('express-session');
+var client = require('Twilio')('AC3c3038a47a7752cf097e9f3732bb53a3', '24e5b2160646dcd95bfcef9cc3263605');
 
 dotenv.load();
 
@@ -64,6 +65,22 @@ passport.deserializeUser(function(user, done) {
 
 var app = express();
 app.use(methodOverride('_method'));
+
+
+app.on('alarm', function(){
+  client.sendMessage({
+     to: '+19568785924',
+     from: '+19562718912',
+     body: 'Hello, You have been contacted because is in danger. Please try contacting them.'
+   });
+});
+
+var alarm = setTimeout(function(){
+  app.emit('alarm');
+}, 5 * 1000)
+
+//clearTimeout(alarm);
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
