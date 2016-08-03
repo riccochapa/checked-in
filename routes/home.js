@@ -19,23 +19,23 @@ app.on('alarm', function(){
      from: '+19562718912',
      body: 'Hello, You have been contacted because is in danger. Please try contacting them.'
 
- }, function(err, responseData) { //this function is executed when a response is received from Twilio
-
-     if (!err) { // "err" is an error received during the request, if any
-
-         // "responseData" is a JavaScript object containing data received from Twilio.
-         // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
-         // http://www.twilio.com/docs/api/rest/sending-sms#example-1
-         //
-         console.log('responseData.from', responseData.from); // outputs "+14506667788"
-         console.log('responseData.body', responseData.body); // outputs "word to your mother."
-
-     }
+ // }, function(err, responseData) { //this function is executed when a response is received from Twilio
+ //
+ //     if (!err) { // "err" is an error received during the request, if any
+ //
+ //         // "responseData" is a JavaScript object containing data received from Twilio.
+ //         // A sample response from sending an SMS message is here (click "JSON" to see how the data appears in JavaScript):
+ //         // http://www.twilio.com/docs/api/rest/sending-sms#example-1
+ //         //
+ //         console.log('responseData.from', responseData.from); // outputs "+14506667788"
+ //         console.log('responseData.body', responseData.body); // outputs "word to your mother."
+ //
+ //     }
 
  });
 
-   console.log('alarm rung!');
-   console.log(arguments);
+  //  console.log('alarm rung!');
+  //  console.log(arguments);
 });
 
 setTimeout(function(){
