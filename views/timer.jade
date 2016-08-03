@@ -23,7 +23,8 @@ html
       button(type="submit") START
       button#stop STOP
       
-
+    script.
+      var client = require('Twilio')('AC3c3038a47a7752cf097e9f3732bb53a3', '24e5b2160646dcd95bfcef9cc3263605');
 
     script.
       function getTimeRemaining(endtime) {
@@ -52,7 +53,6 @@ html
       
       clock.onsubmit = function(e){
         e.preventDefault(e);
-        
         var days = clock.querySelector('[name="days"]');
         var hours = clock.querySelector('[name="hours"]');
         var minutes = clock.querySelector('[name="minutes"]');
@@ -71,7 +71,13 @@ html
           minutes.value = ('0' + t.minutes).slice(-2);
           seconds.value = ('0' + t.seconds).slice(-2);
           if (t.total <= 0) {
+            alert("WHERE U AT?")
             clearInterval(timerInterval);
+            client.sendMessage({
+              to: '+19568785924',
+              from: '+19562718912',
+              body: 'Hey gurl.'
+             }
           }
         }
         updateClock();
