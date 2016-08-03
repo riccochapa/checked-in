@@ -27,12 +27,12 @@ if (MONGO_HOST) {
 
 
 var users = require('./routes/users');
-var courses = require('./routes/courses');
 var routes = require('./routes/index');
+var user = require('./routes/user');
 
 
 var home = require('./routes/home');
-var userprofile = require('./routes/userprofile');
+var alertsettings = require('./routes/alertsettings');
 var settings = require('./routes/settings');
 var contacts = require('./routes/contacts');
 
@@ -97,15 +97,15 @@ app.use(express.static(path.join(__dirname, './public')));
 
 
 app.use('/', routes);
-app.use('/courses', courses);
 app.use('/users', users);
+app.use('/user', user);
 
 // ---Used for Checked-In web app---
 
 // Home page
 app.use('/home', home);
 //User can view their profile
-app.use('/userprofile', userprofile);
+app.use('/alertsettings', alertsettings);
 // User can change their settings
 app.use('/settings', settings);
 // User can view their contacts

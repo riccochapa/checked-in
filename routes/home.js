@@ -1,12 +1,15 @@
 var express = require('express');
+var passport = require('passport');
+var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
 var client = require('Twilio')('AC3c3038a47a7752cf097e9f3732bb53a3', '24e5b2160646dcd95bfcef9cc3263605');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('home', { User: 'USER NAME' });
+router.get('/', ensureLoggedIn, function(req, res, next) {
+  res.render('home', { user: req.user });
 });
 
+<<<<<<< HEAD
 var app = express();
 
 // erased this and it worked!!!!!
@@ -67,5 +70,7 @@ setTimeout(function(){
 
 
 
+=======
+>>>>>>> riccochapa/master
 
 module.exports = router;
