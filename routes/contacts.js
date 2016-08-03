@@ -5,25 +5,29 @@ var router = express.Router();
 
 var EmergencyContacts = require('../models/EmergencyContacts.js');
 
-router.get('/', function(req, res, next){
-  EmergencyContacts.find(function(err, docs){
+router.get('/', ensureLoggedIn, function(req, res, next){
+  EmergencyContacts.find({
+    'contact.auth0': req.user.id
+  }, function(err, docs){
     res.render('contacts/index', { contacts: docs, user: req.user });
   });
 });
 
-router.get('/add_new_contact', function(req, res, next){
-  EmergencyContacts.find(function(err, docs){
+router.get('/add_new_contact', ensureLoggedIn, function(req, res, next){
+  EmergencyContacts.find({
+    'contact.auth0': req.user.id
+  }, function(err, docs){
     res.render('contacts/add_new_contact', { contacts: docs , user: req.user });
   });
 });
 
-router.post('/add_new_contact', function(req, res, next){
+router.post('/add_new_contact', ensureLoggedIn, function(req, res, next){
   var contact = new EmergencyContacts({
     contact: [{
       name: req.body.name,
       phone: req.body.phone,
       email: req.body.email,
-      auth0: req.body.auth0
+      auth0: req.user.id
     }],
   });
   contact.save(function(err){
@@ -32,16 +36,22 @@ router.post('/add_new_contact', function(req, res, next){
   });
 });
 
-router.get('/:id', function(req, res, next){
-  EmergencyContacts.findById(req.params.id, function(err, contact){
+router.get('/:id', ensureLoggedIn, function(req, res, next){
+  EmergencyContacts.findOne({
+    _id: req.params.id,
+    'contact.auth0': req.user.id
+  }, function(err, contact){
     if (err) return next(err);
     if (!contact) return next(404);
     res.render('contacts/edit_contact', {contact: contact , user: req.user});
   });
 });
 
-router.put('/:id', function(req, res, next){
-  EmergencyContacts.findByIdAndUpdate(req.params.id, { $set: { contact:[{name: req.body.name, phone: req.body.phone, email: req.body.email}] }}, function (err, contact) {
+router.put('/:id', ensureLoggedIn, function(req, res, next){
+  EmergencyContacts.findOneAndUpdate({
+    _id: req.params.id,
+    'contact.auth0': req.user.id
+  }, { $set: { contact:[{name: req.body.name, phone: req.body.phone, email: req.body.email, auth0: req.user.id}] }}, function (err, contact) {
     if (err) return next(err);
     contact.save(function(err){
       if (err) res.send('error ' + err);
@@ -52,7 +62,7 @@ router.put('/:id', function(req, res, next){
   });
 });
 
-router.get('/:id/remove_contact', function(req, res, next){
+router.get('/:id/remove_contact', ensureLoggedIn, function(req, res, next){
   EmergencyContacts.findById(req.params.id, function(err, contact){
     if (err) return next(err);
     if (!contact) return next(404);
@@ -61,7 +71,7 @@ router.get('/:id/remove_contact', function(req, res, next){
 });
 
 
-router.delete('/:id/remove_contact', function(req, res, next){
+router.delete('/:id/remove_contact', ensureLoggedIn, function(req, res, next){
   EmergencyContacts.findByIdAndRemove(req.params.id, function(err, contact){
     if (err) return res.send(err);
     res.redirect('/contacts');
