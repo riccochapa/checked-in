@@ -10,6 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var Auth0Strategy = require('passport-auth0');
 var dotenv = require('dotenv');
 var session = require('express-session');
+var client = require('Twilio')('AC3c3038a47a7752cf097e9f3732bb53a3', '24e5b2160646dcd95bfcef9cc3263605');
 
 dotenv.load();
 
@@ -61,6 +62,17 @@ passport.deserializeUser(function(user, done) {
 
 var app = express();
 app.use(methodOverride('_method'));
+
+
+app.on('alarm', function(){
+  console.log('alarm rung!');
+  console.log(arguments);
+});
+
+setTimeout(function(){
+  app.emit('alarm', ['a', 'b'], 'c');
+}, 5 * 1000)
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
