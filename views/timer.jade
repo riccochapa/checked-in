@@ -1,10 +1,17 @@
 doctype html
 html
   head
-    title= title
     link(rel='stylesheet', href='/stylesheets/timer.css')
-  body
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css', integrity='sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+
+body
     block content
+    h1 Checked In
+    h3 Welcome #{user.nickname}!
+    br
+    h2 Alert Settings 
 
     form#inputClock
       div
@@ -23,8 +30,6 @@ html
       button(type="submit") START
       button#stop STOP
       
-    script.
-      var client = require('Twilio')('AC3c3038a47a7752cf097e9f3732bb53a3', '24e5b2160646dcd95bfcef9cc3263605');
 
     script.
       function getTimeRemaining(endtime) {
@@ -72,14 +77,16 @@ html
           seconds.value = ('0' + t.seconds).slice(-2);
           if (t.total <= 0) {
             clearInterval(timerInterval);
-            window.location.href = "http://localhost:8080/test"
-            
-            
+            window.location.href = "http://localhost:8080/test"                    
           }
         }
         updateClock();
         timerInterval = setInterval(updateClock, 1000);
       };
       
-  br
-  a(href='/home') Go Back
+    br
+    a(href='/user') Home
+    br
+    a(href='/settings') Contact Settings
+    br
+    a(href='/logout') Logout

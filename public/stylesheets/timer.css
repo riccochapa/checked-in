@@ -1,12 +1,11 @@
 body{
 	text-align: center;
-	background: #00ECB9;
   font-family: sans-serif;
   font-weight: 100;
 }
 
 h1{
-  color: #396;
+  color: #000;
   font-weight: 100;
   font-size: 40px;
   margin: 40px 0px 20px;
@@ -14,7 +13,7 @@ h1{
 
 #inputClock {
 	font-family: sans-serif;
-	color: #fff;
+	color: #000;
 	display: inline-block;
 	font-weight: 100;
 	text-align: center;
@@ -24,7 +23,7 @@ h1{
 #inputClock > div{
 	padding: 10px;
 	border-radius: 3px;
-	background: #00BF96;
+	background: #999999;
 	display: inline-block;
 }
 
@@ -36,7 +35,7 @@ h1{
 #inputClock div > input {
 	padding: 15px;
 	border-radius: 3px;
-	background: #00816A;
+	background: #000000;
 	display: inline-block;
 	border: 0;
 	width: 32px;

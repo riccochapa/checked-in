@@ -2,16 +2,16 @@ extends ../layout
 
 block content
   h1 Checked In
-  h3 Welcome #{user.nickname}!
-  br
-  h2 Create New Contact
+  h3 Create New Contact
   br  
   form(action="", method="post")
     p Name:
     input(type="text", name="name")
     br
+    br
     p Phone:
     input(type="text", name="phone")
+    br
     br
     p Email:
     input(type="text", name="email")

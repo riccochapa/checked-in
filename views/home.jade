@@ -1,20 +1,6 @@
 extends layout
 
 block content
-  h1 Checked In
-  h2 Home
-<<<<<<< HEAD
-  p Hello, #{User}
-  a(href='/userprofile') Profile
-  br
-  a(href='/timer') Timer
-=======
-  img(src="#{user.picture}")
-  br
-  h2 Welcome #{user.nickname}!
-  br  
-  a(href='/alertsettings') Alert Settings
-  br
-  a(href='/logout') Logout
-  
->>>>>>> riccochapa/master
+  h1 Alert Sent
+  p Hello, #{user.nickname}
+  p The first person in your contact list has been notified you haven't checked in.

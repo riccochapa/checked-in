@@ -2,26 +2,26 @@ extends ../layout
 
 block content
   h1 Checked In
-  h3 Welcome #{user.nickname}!
-  br
-  h2 Edit Saved Contact
+  h3 Edit Saved Contact
   br
   ul
-    li
-      each person in contact.contact
-        p #{person.name}, #{person.phone}, #{person.email} 
-        form(action="?_method=put", method="post")
-          p Name:
-          input(type="text", name="name" value="#{person.name}")
-          br
-          p Phone:
-          input(type="text", name="phone" value="#{person.phone}")
-          br
-          p Email:
-          input(type="text", name="email" value="#{person.email}")
-          br
-          br
-          input(type="submit")
+  each person in contact.contact
+    p #{person.name}
+    p #{person.phone} #{person.email} 
+    form(action="?_method=put", method="post")
+      p Name:
+      input(type="text", name="name" value="#{person.name}")
+      br
+      br
+      p Phone:
+      input(type="text", name="phone" value="#{person.phone}")
+      br
+      br
+      p Email:
+      input(type="text", name="email" value="#{person.email}")
+      br
+      br
+      input(type="submit")
   br
   br
   br

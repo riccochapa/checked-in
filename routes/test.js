@@ -2,27 +2,32 @@ var express = require('express');
 var passport = require('passport');
 var ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 var router = express.Router();
-var client = require('Twilio')('AC48b7cad6d105d0180b62141b23115b2a', '0053ecffef55e7ee421eb2134ae5fa07');
+var dotenv = require('dotenv');
+
+dotenv.load();
+
+const ACCOUNT_SID = process.env.ACCOUNT_SID;
+const AUTH_TOKEN = process.env.AUTH_TOKEN;
+
+var client = require('Twilio')(ACCOUNT_SID, AUTH_TOKEN);
 
 /* GET user profile. */
-router.get('/', function(req, res, next) {
+router.get('/', ensureLoggedIn, function(req, res, next) {
   res.render('test')
 
-  var app = express();
-
+var app = express();
 
 app.on('alarm', function(){
     client.sendMessage({
-       to: '+19564665091',
-       from: '+12109878225',
-       body: 'Hey gurl.'
+      to: '...',
+      from: '...',
+      body: 'You have been sent an alert because Ricco did not check in at a time they expected to. Can you you please reach out until you have made contact with them?'
      });
   });
 
   var alarm = setTimeout(function(){
     app.emit('alarm');
   }, 1 * 1000)
-
 
 });
 

@@ -2,21 +2,19 @@ extends ../layout
 
 block content
   h1 Checked In
-  h3 Welcome #{user.nickname}!
+  h3 Remove Contact
   br
-  h2 Remove Contact
-  br
-  h4 Are you sure you want to remove this contact?
+  h5 Are you sure you want to remove this contact?
   ul
-    li
-      each person in contact.contact
-        p #{person.name}, #{person.phone}, #{person.email} 
-        form(action="?_method=delete", method="post")
-          input(type="hidden", name="name" value="#{person.name}")
-          input(type="hidden", name="phone" value="#{person.phone}")
-          input(type="hidden", name="email" value="#{person.email}")
-          br
-          input(type="submit" value="Remove")
+  each person in contact.contact
+    p #{person.name}
+    p #{person.phone} #{person.email} 
+      form(action="?_method=delete", method="post")
+        input(type="hidden", name="name" value="#{person.name}")
+        input(type="hidden", name="phone" value="#{person.phone}")
+        input(type="hidden", name="email" value="#{person.email}")
+        br
+        input(type="submit" value="Remove")
   br
   a(href='/settings') Contact Settings
   br

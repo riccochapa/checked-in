@@ -4,7 +4,8 @@ var mongoose = require("mongoose");
     contact: [{
       name: {type: String, required: true},
       phone: {type: String, required: true},
-      email: {type: String}
+      email: {type: String},
+      auth0: {type: String}
     }],
   });
 
