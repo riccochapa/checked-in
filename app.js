@@ -10,6 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var Auth0Strategy = require('passport-auth0');
 var dotenv = require('dotenv');
 var session = require('express-session');
+var client = require('Twilio')('AC48b7cad6d105d0180b62141b23115b2a', '0053ecffef55e7ee421eb2134ae5fa07');
 
 dotenv.load();
 
@@ -30,11 +31,14 @@ var routes = require('./routes/index');
 var user = require('./routes/user');
 
 
+
+
 var home = require('./routes/home');
 var alertsettings = require('./routes/alertsettings');
 var settings = require('./routes/settings');
 var contacts = require('./routes/contacts');
-
+var timer = require('./routes/timer');
+var test = require('./routes/test');
 
 var strategy = new Auth0Strategy({
     domain:       process.env.AUTH0_DOMAIN,
@@ -61,6 +65,22 @@ passport.deserializeUser(function(user, done) {
 
 var app = express();
 app.use(methodOverride('_method'));
+//
+//
+// app.on('alarm', function(){
+//   client.sendMessage({
+//      to: '+19564665091',
+//      from: '+12109878225',
+//      body: 'Hey gurl.'
+//    });
+// });
+//
+// var alarm = setTimeout(function(){
+//   app.emit('alarm');
+// }, 1 * 1000)
+//
+// clearTimeout(alarm);
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -85,8 +105,13 @@ app.use(express.static(path.join(__dirname, './public')));
 
 
 app.use('/', routes);
+
+
+
+
 app.use('/users', users);
 app.use('/user', user);
+
 
 // ---Used for Checked-In web app---
 
@@ -98,7 +123,10 @@ app.use('/alertsettings', alertsettings);
 app.use('/settings', settings);
 // User can view their contacts
 app.use('/contacts', contacts);
-
+// User can access timer
+app.use('/timer', timer);
+// User can access test
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

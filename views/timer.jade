@@ -1,0 +1,85 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/timer.css')
+  body
+    block content
+
+    form#inputClock
+      div
+        span.days Days
+        input(type="number", value="00", min="0", max="31", name="days")        
+      div
+        span.hours Hours
+        input(type="number", value="01", min="0", max="24", name="hours")
+      div
+        span.minutes Minutes
+        input(type="number", value="00", min="0", max="60", name="minutes")
+      div
+        span.seconds Seconds
+        input(type="number", value="00", min="0", max="60", name="seconds")
+
+      button(type="submit") START
+      button#stop STOP
+      
+    script.
+      var client = require('Twilio')('AC3c3038a47a7752cf097e9f3732bb53a3', '24e5b2160646dcd95bfcef9cc3263605');
+
+    script.
+      function getTimeRemaining(endtime) {
+        var t = endtime - Date.now();
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
+          'total': t,
+          'days': days,
+          'hours': hours,
+          'minutes': minutes,
+          'seconds': seconds
+        };
+      }
+      
+      var timerInterval = null;
+      clock = document.getElementById('inputClock');
+      stop = document.getElementById('stop');
+      
+      stop.onclick = function(e){
+        e.preventDefault();
+        clearInterval(timerInterval);
+      };
+      
+      clock.onsubmit = function(e){
+        e.preventDefault(e);
+        var days = clock.querySelector('[name="days"]');
+        var hours = clock.querySelector('[name="hours"]');
+        var minutes = clock.querySelector('[name="minutes"]');
+        var seconds = clock.querySelector('[name="seconds"]');
+        
+        var endtime = Date.now();
+        endtime += Number(days.value) * 24 * 60 * 60 * 1000;
+        endtime += Number(hours.value) * 60 * 60 * 1000;
+        endtime += Number(minutes.value) * 60 * 1000;
+        endtime += Number(seconds.value) * 1000;
+        
+        function updateClock() {
+          var t = getTimeRemaining(endtime);
+          days.value = ('0' + t.days).slice(-2);
+          hours.value = ('0' + t.hours).slice(-2);
+          minutes.value = ('0' + t.minutes).slice(-2);
+          seconds.value = ('0' + t.seconds).slice(-2);
+          if (t.total <= 0) {
+            clearInterval(timerInterval);
+            window.location.href = "http://localhost:8080/test"
+            
+            
+          }
+        }
+        updateClock();
+        timerInterval = setInterval(updateClock, 1000);
+      };
+      
+  br
+  a(href='/home') Go Back
