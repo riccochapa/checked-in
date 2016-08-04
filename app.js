@@ -10,7 +10,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var Auth0Strategy = require('passport-auth0');
 var dotenv = require('dotenv');
 var session = require('express-session');
-var client = require('Twilio')('AC3c3038a47a7752cf097e9f3732bb53a3', '24e5b2160646dcd95bfcef9cc3263605');
+var client = require('Twilio')('AC48b7cad6d105d0180b62141b23115b2a', '0053ecffef55e7ee421eb2134ae5fa07');
 
 dotenv.load();
 
@@ -38,7 +38,7 @@ var alertsettings = require('./routes/alertsettings');
 var settings = require('./routes/settings');
 var contacts = require('./routes/contacts');
 var timer = require('./routes/timer');
-
+var test = require('./routes/test');
 
 var strategy = new Auth0Strategy({
     domain:       process.env.AUTH0_DOMAIN,
@@ -65,21 +65,21 @@ passport.deserializeUser(function(user, done) {
 
 var app = express();
 app.use(methodOverride('_method'));
-
-
-app.on('alarm', function(){
-  client.sendMessage({
-     to: '+19568785924',
-     from: '+19562718912',
-     body: 'Hello, You have been contacted because is in danger. Please try contacting them.'
-   });
-});
-
-var alarm = setTimeout(function(){
-  app.emit('alarm');
-}, 5 * 1000)
-
-//clearTimeout(alarm);
+//
+//
+// app.on('alarm', function(){
+//   client.sendMessage({
+//      to: '+19564665091',
+//      from: '+12109878225',
+//      body: 'Hey gurl.'
+//    });
+// });
+//
+// var alarm = setTimeout(function(){
+//   app.emit('alarm');
+// }, 1 * 1000)
+//
+// clearTimeout(alarm);
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -125,6 +125,8 @@ app.use('/settings', settings);
 app.use('/contacts', contacts);
 // User can access timer
 app.use('/timer', timer);
+// User can access test
+app.use('/test', test);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
