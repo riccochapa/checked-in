@@ -47,6 +47,17 @@ router.get('/:id', ensureLoggedIn, function(req, res, next){
   });
 });
 
+router.get('/:id', ensureLoggedIn, function(req, res, next){
+  EmergencyContacts.findOne({
+    _id: req.params.id,
+    'contact.auth0': req.user.id
+  }, function(err, contact){
+    if (err) return next(err);
+    if (!contact) return next(404);
+    res.render('contacts/alertsettings', {contact: contact , user: req.user});
+  });
+});
+
 router.put('/:id', ensureLoggedIn, function(req, res, next){
   EmergencyContacts.findOneAndUpdate({
     _id: req.params.id,
